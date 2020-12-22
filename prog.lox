@@ -1,0 +1,34 @@
+fun fibGenerator(a, b) {
+    fun fib() {
+        let c = a;
+        b = a + b;
+        a = b - a;
+        return c;
+    }
+    return fib;
+}
+
+fun APGenerator(a, d) {
+    let b = a;
+    fun x() {
+        let temp = b;
+        b = b + d;
+        return temp;
+    }
+    return x;
+}
+
+
+fun mutateSeries(series, transform, limit) {
+    let i = -1;
+    while((i = i + 1) < limit) {
+        print(
+            transform(series())
+        );
+    }
+}
+
+
+fun timesFour(a) { return a * 4; }
+
+mutateSeries(APGenerator(0, 4), timesFour, 100000);
